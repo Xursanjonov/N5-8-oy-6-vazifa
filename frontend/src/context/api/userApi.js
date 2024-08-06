@@ -18,7 +18,7 @@ export const userApi = api.injectEndpoints({
             invalidatesTags: ["newproject-users"]
         }),
         signUp: build.mutation({
-            query: (body) => ({
+            query: ({ body }) => ({
                 url: "/users/sign-up",
                 method: "POST",
                 body

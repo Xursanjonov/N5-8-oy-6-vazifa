@@ -14,7 +14,7 @@ const Header = () => {
                     <ul className="header__ul">
                         <Link to={'/'}>Home</Link>
                         <li onClick={() => navigate('/create')} className="add__user">Create User</li>
-                        <li onClick={() => navigate("/create-product")} className="add__user">Create Product</li>
+                        {/* <li onClick={() => navigate("/create-product")} className="add__user">Create Product</li> */}
                     </ul>
                 </nav>
             </header>

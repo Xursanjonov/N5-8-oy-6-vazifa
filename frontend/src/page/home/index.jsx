@@ -28,6 +28,10 @@ const Home = () => {
             setUsers(data)
         }
     }, [isFetching])
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [isFetching])
+
     return (
         <section>
             <div className="wrapper">

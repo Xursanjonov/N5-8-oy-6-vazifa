@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema({
     },
     lname: {
         type: String,
+        required: false,
         default: ""
     },
     username: {
@@ -20,15 +21,16 @@ const userSchema = new mongoose.Schema({
     },
     age: {
         type: Number,
-        required: true
+        required: false,
+        default: 0
     },
     url: {
-        type: String,
-        required: true
+        type: Array,
+        required: false,
+        default: ""
     },
-    gander: {
+    gender: {
         type: String,
-        required: true
     },
     isActive: {
         type: Boolean,
@@ -36,11 +38,17 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: true
+        required: false,
+        default: ""
     },
     budget: {
         type: Number,
         required: true
+    },
+    role: {
+        type: String,
+        required: false,
+        default: "user"
     },
 })
 
@@ -49,15 +57,16 @@ export const User = mongoose.model('newproject-users', userSchema)
 export const validationUsers = (body) => {
     let schema = Joi.object({
         fname: Joi.string().required(),
-        lname: Joi.string().allow(""),
-        username: Joi.string().required(),
-        password: Joi.string().required(),
-        age: Joi.number().required(),
-        url: Joi.string().required(),
-        gander: Joi.string().required(),
+        lname: Joi.string().optional(""),
+        username: Joi.string().min(3).max(18).required(),
+        password: Joi.string().min(8).max(16).required(),
+        age: Joi.number().optional(),
+        url: Joi.array().optional(),
+        gender: Joi.string(),
         isActive: Joi.boolean(),
-        email: Joi.string().required(),
+        email: Joi.string(),
         budget: Joi.number().required(),
+        role: Joi.string().optional(),
     })
 
     return schema.validate(body)

@@ -9,14 +9,15 @@ const UserCart = ({ user }) => {
     return (
         <Fragment>
             <div className='user__cart'>
-                <img className="user__img" src={user.url ?? empty} alt="" />
+                <img className="user__img" src={user?.url[0] ?? empty} alt="" />
                 <div className="user__info">
-                    <li> <span>Full name:</span> <p>{`${user?.fname} ${user?.lname}`}</p></li>
-                    <li> <span>Age:</span> <p>{user?.age}</p></li>
-                    <li> <span>Gander:</span> <p>{user?.gander}</p></li>
-                    <li> <span>Username:</span> <p>{user?.username}</p></li>
-                    <li> <span>Budget:</span> <p>{user?.budget}$</p></li>
-                    <li> <span>Email:</span> <p>{user?.email}</p></li>
+                    <li> <span>First Name:</span> <p>{user?.fname}</p></li>
+                    <li> <span>Last Name:</span> <p>{user?.lname}</p></li>
+                    <li> <span>Age:</span> {user?.age}</li>
+                    <li> <span>Gander:</span> {user?.gander}</li>
+                    <li> <span>Username:</span> {user?.username}</li>
+                    <li> <span>Email:</span> {user?.email}</li>
+                    <li> <span>Budget:</span> {user?.budget}$</li>
                 </div>
                 <div className="cart__btns">
                     <button className="edit__btn" >Edit</button>
